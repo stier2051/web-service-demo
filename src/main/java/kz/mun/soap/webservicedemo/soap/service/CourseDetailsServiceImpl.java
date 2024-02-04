@@ -2,6 +2,7 @@ package kz.mun.soap.webservicedemo.soap.service;
 
 import kz.mun.courses.*;
 import kz.mun.soap.webservicedemo.soap.bean.Course;
+import kz.mun.soap.webservicedemo.soap.exception.CourseNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class CourseDetailsServiceImpl implements CourseDetailsService {
                 return mapCourseDetails(course);
             }
         }
-        return null;
+        throw new CourseNotFoundException("Invalid Course Id " + id);
     }
 
     @Override
